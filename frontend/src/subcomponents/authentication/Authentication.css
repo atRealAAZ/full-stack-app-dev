@@ -1,0 +1,14 @@
+.form-control {
+    width: 240px;
+    margin: auto
+}
+
+.auth {
+    width: 32rem;
+    background-color: #e3e3e3;
+}
+
+button {
+    width: 100px;
+    margin: 6px
+}

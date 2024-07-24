@@ -1,0 +1,17 @@
+services:
+  frontend:
+   container_name: bank-frontend
+   build: ./frontend
+   volumes:
+    - ./frontend/src:/frontend/src
+   ports:
+    - 3000:3000
+   command: npm start
+  
+  backend:
+    container_name: bank-backend
+    build: ./backend
+    volumes:
+      - ./backend/app:/backend/app
+    ports:
+      - 5001:5001

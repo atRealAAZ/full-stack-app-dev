@@ -1,0 +1,21 @@
+FROM python:slim
+
+RUN useradd backend
+WORKDIR /home/backend
+
+COPY requirements.txt requirements.txt
+RUN python -m venv venv
+RUN venv/bin/pip install -r requirements.txt
+RUN venv/bin/pip install gunicorn
+
+COPY app app
+COPY backend.py config.py boot.sh ./
+RUN chmod +x boot.sh
+
+ENV FLASK_APP backend.py
+
+RUN chown -R backend:backend ./
+USER backend
+
+EXPOSE 5001
+ENTRYPOINT ["./boot.sh"]
